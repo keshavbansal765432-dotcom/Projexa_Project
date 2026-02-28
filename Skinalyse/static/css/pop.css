@@ -1,0 +1,32 @@
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.modal-content {
+    display: flex;
+    gap: 20px;
+}
+
+.camera-section {
+    background: #000;
+    flex: 1;
+}
+
+video {
+    width: 100%;
+}

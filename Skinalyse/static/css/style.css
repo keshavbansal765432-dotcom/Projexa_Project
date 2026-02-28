@@ -1,0 +1,335 @@
+/* =========================
+   GOOGLE FONTS
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top left, #030b21, transparent 40%),
+    radial-gradient(circle at bottom right, #e52484, transparent 35%),
+    linear-gradient(135deg, #13267c, #2d42a0);
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: rgba(8, 11, 106, 0.904);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(67, 65, 65, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #a5bff3;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  background: #1b23c8;
+  left: 0;
+  bottom: -6px;
+  transition:  width 0.3s ease ;
+  background: linear-gradient(90deg, #50ea50, #0996bd);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.lang {
+  opacity: 0.8;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.container {
+  text-align: center;
+  padding: 80px 10%;
+}
+
+.container h1 {
+  font-size: 48px;
+  margin-bottom: 60px;
+  display: inline-block;
+
+  background: linear-gradient(to right, #abc722, #b2172b);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+
+/* =========================
+   STEPS (IMPROVED)
+========================= */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-bottom: 100px;
+}
+
+/* Step Card */
+.step {
+  background: rgba(232, 193, 193, 0.837);
+  backdrop-filter: blur(16px);
+  padding: 40px 28px;
+  border-radius: 22px;
+  border: 1px solid rgba(22, 21, 21, 0.08);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.4s ease;
+}
+
+/* Hover Effect */
+.step:hover {
+  transform: translateY(-14px);
+  box-shadow: 0 25px 60px rgba(50, 144, 185, 0.35);
+}
+
+/* Step Images */
+.step img {
+  width: 150px;        /* Bigger & clearer */
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.35));
+}
+
+/* Step Title */
+.step h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #d99919;
+  font-weight: 600;
+}
+
+/* Step Description */
+.step p {
+  font-size: 15px;
+  color: #0f0f10;
+  line-height: 1.6;
+}
+
+/* =========================
+   FEATURES
+========================= */
+.features {
+  margin: 100px 0;
+}
+
+.features h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(117, 46, 194, 0.84),
+    rgba(232, 193, 156, 0.856)
+  );
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 143, 197, 0.775),
+    rgba(245, 102, 173, 0.35)
+  );
+}
+
+/* =========================
+   INFO SECTIONS
+========================= */
+.info {
+  margin: 80px auto;
+  max-width: 800px;
+}
+
+.info h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.info ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.info li {
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+/* =========================
+   CTA BUTTON
+========================= */
+.cta {
+  margin-top: 40px;
+  padding: 16px 45px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #a0e978, #f3322ce8);
+  color: #0e0e0e;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.cta:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(187, 56, 235, 0.6);
+}
+
+/* =========================
+   WHY SKINALYSE
+========================= */
+.why-skinalyse {
+  padding: 100px 10%;
+}
+
+.why-block {
+  background: #ffffff;
+  color:#030b21;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: 0.3s;
+  box-shadow: 0 18px 40px rgb(18, 18, 18);
+}
+
+.why-block:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================
+   STATS
+========================= */
+.stats {
+  text-align: center;
+  padding: 80px 10%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.stat {
+  background: rgba(25, 64, 181, 0.956);
+  padding: 30px;
+  border-radius: 18px;
+}
+
+.stat h3 {
+  font-size: 36px;
+  color: #f4bf6b;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact {
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #cbf22e, #da0917);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+}

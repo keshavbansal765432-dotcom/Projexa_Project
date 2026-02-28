@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CTA Button</title>
+    <style>
+        .cta {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .modal-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .camera-section {
+            background: #000;
+            flex: 1;
+        }
+
+        video {
+            width: 100%;
+        }
+
+        .snap {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .camera-section {
+            background: #000;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-section {
+            width: 200px;
+        }
+
+        .camera-section {
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 6px;
+        }
+
+        .btn-dark {
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        .btn-dark:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* upload / get result btn – accent colour */
+        #uploadBtn {
+            background: #1a6ef5;
+        }
+
+        #uploadBtn:hover:not(:disabled) {
+            background: #0f55c8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="cta" onclick="openCameraModal()">
+        OPEN CAMERA
+    </button>
+
+
+
+    <div id="overlay" class="overlay" onclick="closeCameraModal()"></div>
+
+
+    <div id="cameraModal" class="modal">
+        <button class="close-btn" onclick="closeCameraModal()">✕</button>
+
+        <div>
+
+
+
+        </div>
+
+        <div class="modal-content">
+            <div class="text-section">
+                <h2>Open Camera</h2>
+                <p>Allow camera access to continue</p>
+                <p> <button class="cta" onclick="window.location.href='browsing.html'">OPEN BROWSER</button></p>
+
+                <div> <!-- NEW BUTTON -->
+                    <button class="btn-dark" id="uploadBtn" disabled>
+                        UPLOAD / GET RESULT
+                    </button>
+                </div>
+            </div>
+
+            <div class="camera-section">
+                <video id="video" autoplay playsinline></video>
+            </div>
+
+            <div>
+                <button id="snap">Capture</button>
+            </div>
+
+            <div>
+                <canvas id="canvas" style="display:none;"></canvas>
+            </div>
+        </div>
+
+
+        <script src="/static/js/popcamera.js"></script>
+</body>
+
+</html>
