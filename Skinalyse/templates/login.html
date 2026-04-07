@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Skinalyse</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="login-card">
+        <h2>Welcome Back</h2>
+        {% if error %}
+        <div class="error-msg">{{ error }}</div>
+        {% endif %}
+        {% if message %}
+        <div style="color: #a0e978; margin-bottom: 15px; font-size: 14px;">{{ message }}</div>
+        {% endif %}
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" required placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+        <span class="switch-link">
+            Don't have an account? <a href="/register">Create one</a>
+        </span>
+    </div>
+</body>
+</html>

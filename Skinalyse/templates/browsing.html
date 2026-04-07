@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTA Button</title>
+    <style>
+        .cta {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+
+
+        }
+
+        .btn-dark {
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        .btn-dark:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* upload / get result btn – accent colour */
+        #uploadBtn {
+            background: #1a6ef5;
+        }
+
+        #uploadBtn:hover:not(:disabled) {
+            background: #0f55c8;
+        }
+
+        #uploadBtn {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Upload from device -->
+    <input type="file" id="img" accept="image/*">
+
+    <div> <!-- NEW BUTTON -->
+        <button class="btn-dark" id="uploadBtn" disabled>
+            UPLOAD / GET RESULT
+        </button>
+    </div>
+
+
+
+    <!-- Preview -->
+    <img id="preview" style="max-width:300px ; display:none;">
+
+    <script src="/static/js/browsing.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skinalyse | Advanced AI Dermatology</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/images/logo.img.jpeg">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/static/images/logo.img.jpeg" alt="Logo">
+            <span>Skinalyse</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/logout" style="color: var(--secondary);">Logout</a></li>
+        </ul>
+        <div class="lang">
+            User: {{ user }}
+        </div>
+    </nav>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+
+            <!-- State 1: Selection -->
+            <div id="stateSelection" class="modal-state active">
+                <h2 style="text-align: center; margin-bottom: 10px;">Instant AI Analysis</h2>
+                <p style="text-align: center; color: var(--text-dim);">Select your preferred method to scan your skin.</p>
+                <div class="selection-grid">
+                    <div class="select-card" onclick="showState('camera')">
+                        <i class="fas fa-camera" style="color: var(--primary);"></i>
+                        <h3>Live Camera</h3>
+                        <p>Scan directly using your device.</p>
+                    </div>
+                    <div class="select-card" onclick="showState('upload')">
+                        <i class="fas fa-file-upload" style="color: var(--accent);"></i>
+                        <h3>Upload Image</h3>
+                        <p>Upload a photo from your gallery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- State 2: Camera -->
+            <div id="stateCamera" class="modal-state">
+                <h2 style="text-align: center;">Live Scan</h2>
+                <div class="camera-wrapper">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <button id="snap" class="cta">📸 Capture</button>
+                    <button id="retake" class="cta" style="display: none; background: rgba(255,255,255,0.1); color:#fff;">🔄 Retake</button>
+                    <button id="cameraAnalyze" class="cta" style="display: none; background: var(--primary);">🔬 Start AI Analysis</button>
+                </div>
+            </div>
+
+            <!-- State 3: Upload -->
+            <div id="stateUpload" class="modal-state">
+                <h2 style="text-align: center;">Upload Image</h2>
+                <div style="margin: 40px 0; text-align: center;">
+                    <label for="fileInput" class="select-card" style="display: block; width: 100%; border: 2px dashed var(--glass-border);">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3 id="fileName">Drop image here or click to browse</h3>
+                        <input type="file" id="fileInput" hidden accept="image/*">
+                    </label>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button id="uploadAnalyze" class="cta" style="display: none; background: var(--primary);">🚀 Start AI Analysis</button>
+                </div>
+            </div>
+
+            <!-- State 4: Loading -->
+            <div id="stateLoading" class="modal-state">
+                <div class="spinner"></div>
+                <h2 style="text-align: center;">AI is analyzing...</h2>
+                <p style="text-align: center; color: var(--text-dim);">We are identifying patterns for 7 core skin conditions.</p>
+            </div>
+
+            <!-- State 5: Result -->
+            <div id="stateResult" class="modal-state">
+                <h2 style="text-align: center; margin-bottom: 30px;">Analysis Result</h2>
+                <div style="display: flex; gap: 30px; align-items: start;">
+                    <img id="resultImage" src="" alt="Result" style="width: 300px; height: 300px; border-radius: 20px; object-fit: cover; border: 2px solid var(--primary);">
+                    <div style="flex: 1;">
+                        <h3 id="resultTitle" style="font-size: 24px; color: var(--primary); margin-bottom: 10px;">Result Name</h3>
+                        <p id="resultDesc" style="color: #fff; margin-bottom: 30px;">Detailed findings from Skinalyse AI.</p>
+                        <a id="downloadBtn" href="/download_report" class="cta" style="display: inline-block; text-decoration: none;">⬇ Download PDF Report</a>
+                        <p style="margin-top: 20px; font-size: 14px; opacity: 0.6;">* Assessment by AI. Consult a medical professional for final diagnosis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container" id="mainContent">
+        <!-- 1. HERO -->
+        <header class="hero">
+            <h1>Early detection. <br> <span style="color: var(--primary);">Save your skin.</span></h1>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 40px;">
+                Empowering individuals around the world with instant, AI-driven dermatological insights. Proactive care starts here.
+            </p>
+        </header>
+
+        <!-- 2. STEPS (HOW IT WORKS) -->
+        <section class="steps" id="how">
+            <h2 style="font-size: 36px; margin-bottom: 50px;">How It Works</h2>
+            <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="step">
+                    <img src="/static/images/hand with hone.jpg.jpeg" alt="Step 1">
+                    <h3>Step 1</h3>
+                    <p>Capture or upload a clear photo of your skin concern.</p>
+                </div>
+                <div class="step">
+                    <img src="/static/images/step2AI.jpeg" alt="Step 2">
+                    <h3>Step 2</h3>
+                    <p>Our deep learning model analyzes patterns in milliseconds.</p>
+                </div>
+                <div class="step">
+                    <img src="/static/images/step3report.webp" alt="Step 3">
+                    <h3>Step 3</h3>
+                    <p>Receive a clinical-grade PDF report with risk levels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DETAILS (FEATURES & FAQ) -->
+        <section id="details" style="margin-top: 150px;">
+            <div class="features-wrapper">
+                <h2 style="font-size: 32px; margin-bottom: 40px;">Why choose Skinalyse?</h2>
+                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div class="card">✔ 98% Detection Accuracy</div>
+                    <div class="card">✔ Instant AI Diagnosis</div>
+                    <div class="card">✔ HIPAA Compliant</div>
+                    <div class="card">✔ Global Access 24/7</div>
+                </div>
+            </div>
+
+            <div class="faq-wrapper" style="margin-top: 100px;">
+                <h2 style="margin-bottom: 30px;">Scientific Foundation</h2>
+                <p style="color: var(--text-dim); max-width: 800px; margin: 0 auto;">
+                    Skinalyse utilizes a Convolutional Neural Network (CNN) trained on over 20,000 dermatological datasets. 
+                    It identifies subtle markers for Melanoma, Carcinomas, and other benign conditions that may be missed by the naked eye.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. CTA (THE BUTTON) -->
+        <section class="cta-section" style="margin-top: 120px; padding: 100px 0; background: rgba(160, 233, 120, 0.05); border-radius: 40px;">
+            <h2>Ready to check your skin?</h2>
+            <p style="color: var(--text-dim); margin-bottom: 40px;">Start your analysis now and get results in seconds.</p>
+            <button class="cta" style="font-size: 24px; padding: 25px 60px;" onclick="openModal()">
+                GET INSTANT RESULT
+            </button>
+        </section>
+
+        <!-- 5. CONTACT FORM -->
+        <section id="contact" class="contact-section" style="margin-top: 150px; padding-bottom: 80px;">
+            <div class="contact-card">
+                <h2>Contact Us</h2>
+                <p style="color: var(--text-dim); margin-bottom: 40px;">Have questions or feedback? Our team is here to help.</p>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="cta">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Skinalyse AI. For educational and screening purposes only.</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

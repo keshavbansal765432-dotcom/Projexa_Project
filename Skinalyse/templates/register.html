@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Skinalyse</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body>
+    <div class="register-card">
+        <h2>Join Skinalyse</h2>
+        <p style="color: #ccc; margin-bottom: 25px;">Take control of your skin health today.</p>
+        
+        {% if error %}
+        <div class="error-msg">{{ error }}</div>
+        {% endif %}
+
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" required placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required placeholder="Create a password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" required placeholder="Repeat password">
+            </div>
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+        
+        <span class="switch-link">
+            Already have an account? <a href="/login">Click here to sign in</a>
+        </span>
+    </div>
+</body>
+</html>
