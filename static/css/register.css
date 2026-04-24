@@ -1,0 +1,76 @@
+/* Using variables from your main style.css */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.register-card {
+    background: var(--glass);
+    backdrop-filter: blur(40px);
+    padding: 50px 40px;
+    border-radius: 40px;
+    border: 1px solid var(--glass-border);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+}
+
+.register-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #abc722, #b2172b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dim);
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    background: rgba(160, 233, 120, 0.08);
+}
+
+.register-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #628113 0%, #b32a00 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
