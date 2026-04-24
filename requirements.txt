@@ -1,0 +1,9 @@
+flask
+pyrebase4
+gunicorn
+requests
+fpdf
+tensorflow==2.15.0
+numpy<2.0.0
+pillow
+python-dotenv
