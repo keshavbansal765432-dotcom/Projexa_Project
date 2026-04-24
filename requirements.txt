@@ -1,0 +1,19 @@
+# Web Framework & Server
+flask
+gunicorn
+
+# Firebase Authentication
+pyrebase4
+requests
+
+# PDF Generation
+fpdf
+
+# AI & Machine Learning
+# Use tensorflow-cpu to stay within Render's free tier memory limits
+tensorflow-cpu 
+numpy
+pillow
+
+# Environment & Utilities
+python-dotenv
